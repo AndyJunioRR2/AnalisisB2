@@ -1,5 +1,5 @@
 # AnalisisB2
-## Algoritmos y Probabilidad
+## 1. Algoritmos y Probabilidad
 
 Los algoritmos no siempre siguen caminos deterministas y predecibles. En el mundo de la computación moderna, existen enfoques en los que la incertidumbre y el azar juegan un papel central: los **algoritmos probabilísticos**.
 
@@ -71,3 +71,128 @@ La inclusión de la probabilidad en el diseño de algoritmos amplía significati
 Los algoritmos probabilísticos enriquecen el panorama de paradigmas de resolución de problemas, y reflejan cómo la computación puede beneficiarse incluso de lo impredecible.
 
 ---
+## 2. Paradigma: Divide y Vencerás  
+## Caso aplicado: Búsqueda Binaria
+
+La programación algorítmica cuenta con varios paradigmas poderosos para resolver problemas. Uno de los más conocidos es **Divide y Vencerás**, una estrategia que ha dado lugar a algunos de los algoritmos más eficientes. En esta ocasión, exploraremos cómo este paradigma se aplica en la **búsqueda binaria**, una técnica fundamental en la informática.
+
+## ¿En qué consiste el paradigma de Divide y Vencerás?
+
+Este enfoque divide un problema complejo en subproblemas más pequeños y más manejables. Luego, se resuelve cada subproblema (a menudo de forma recursiva), y finalmente se combinan las soluciones parciales para obtener el resultado final.
+
+Las tres etapas principales son:
+
+1. **Dividir**: Separar el problema en partes.
+2. **Vencer (resolver)**: Resolver cada parte por separado.
+3. **Combinar**: Integrar las soluciones de las partes para formar la solución total.
+
+Este patrón está presente en algoritmos como MergeSort, QuickSort, Fast Fourier Transform (FFT), y también en **búsqueda binaria**.
+
+## ¿Qué es la Búsqueda Binaria?
+
+La **búsqueda binaria** es un algoritmo diseñado para buscar un elemento en una lista ordenada. En lugar de revisar todos los elementos uno por uno, el algoritmo descarta la mitad de la lista en cada paso.
+
+### Idea básica
+
+Dado un arreglo ordenado `A` y un valor `x` a buscar:
+
+1. Se compara `x` con el elemento del medio.
+2. Si son iguales, se encontró el elemento.
+3. Si `x` es menor, se repite el proceso en la mitad izquierda.
+4. Si `x` es mayor, se repite en la mitad derecha.
+
+Este proceso se repite hasta encontrar el valor o hasta que el subarreglo sea vacío.
+
+---
+
+## Ejemplo: Prueba de Escritorio (nuevo)
+
+### Tupla de entrada:
+```python
+T = [5, 12, 18, 27, 33, 41, 60, 73, 85, 99]
+x = 41
+```
+
+### Pasos del algoritmo:
+
+1. `Inicio = 0`, `Fin = 9`  
+   `Mitad = (0 + 9) // 2 = 4 → T[4] = 33`  
+   Como `41 > 33`, se busca a la derecha.
+
+2. `Inicio = 5`, `Fin = 9`  
+   `Mitad = (5 + 9) // 2 = 7 → T[7] = 73`  
+   Como `41 < 73`, se busca a la izquierda.
+
+3. `Inicio = 5`, `Fin = 6`  
+   `Mitad = (5 + 6) // 2 = 5 → T[5] = 41`  
+   ¡Elemento encontrado!
+
+### Resultado:
+
+El elemento `x = 41` se encuentra en la **posición 5** del arreglo.
+
+---
+
+
+---
+
+## Complejidad del algoritmo
+
+- **Tiempo**: O(log n)  
+- **Espacio**: O(1) (versión iterativa) u O(log n) (versión recursiva)
+
+La eficiencia del algoritmo es producto del paradigma de **divide y vencerás**, que reduce el tamaño del problema a la mitad en cada iteración.
+
+## Ventajas de la búsqueda binaria
+
+- Muy rápida en arreglos ordenados.
+- Fácil de implementar.
+- Ideal para grandes volúmenes de datos.
+
+## Limitaciones
+
+- Solo funciona en estructuras ordenadas.
+- Requiere acceso aleatorio a los elementos (por ejemplo, en arreglos; no en listas enlazadas).
+- Puede ser menos eficiente que una búsqueda lineal si el conjunto es muy pequeño.
+
+## Aplicaciones comunes
+
+- Verificación rápida de existencia en bases de datos.
+- Localización de límites o umbrales (por ejemplo, en problemas de optimización).
+- Implementación de estructuras como árboles de búsqueda binaria (BST).
+- Uso en librerías estándar (`binary_search` en C++, `bisect` en Python).
+## Implementación básica
+
+La búsqueda binaria puede implementarse de distintas formas, pero una de las más comunes es el enfoque iterativo, el cual utiliza un bucle para reducir progresivamente el intervalo de búsqueda.
+
+A continuación, se muestra una versión en Java que realiza esta tarea. El algoritmo parte del arreglo ordenado y compara el valor objetivo con el elemento central. Dependiendo del resultado, se descarta la mitad izquierda o derecha del arreglo, repitiendo el proceso hasta encontrar el elemento o agotar las opciones.
+
+```java
+public static int busquedaBinaria(int[] arreglo, int x) {
+    int inicio = 0;
+    int fin = arreglo.length - 1;
+
+    while (inicio <= fin) {
+        int mitad = (inicio + fin) / 2;
+
+        if (arreglo[mitad] == x)
+            return mitad; // Elemento encontrado
+        else if (x < arreglo[mitad])
+            fin = mitad - 1; // Buscar en la mitad izquierda
+        else
+            inicio = mitad + 1; // Buscar en la mitad derecha
+    }
+    return -1; // Elemento no encontrado
+}
+```
+
+## Reflexión final
+
+La **búsqueda binaria** es un claro ejemplo de cómo el paradigma de **divide y vencerás** puede transformar una operación aparentemente simple como buscar un número, en una operación altamente eficiente. Al reducir el espacio de búsqueda a la mitad en cada paso, se consigue un rendimiento excelente en escenarios donde la rapidez es clave.
+
+Comprender este paradigma no solo mejora nuestras habilidades de resolución de problemas, sino que también nos brinda herramientas para diseñar algoritmos elegantes y poderosos.
+
+
+
+
+
