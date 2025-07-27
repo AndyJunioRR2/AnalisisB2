@@ -325,6 +325,67 @@ función quickSort(lista):
 ## Conclusión
 
 **QuickSort** es uno de los algoritmos de ordenamiento más populares por su gran rendimiento promedio y bajo uso de memoria. Aunque su rendimiento puede degradarse en casos específicos, una buena elección de pivote y versiones optimizadas lo hacen extremadamente útil en aplicaciones reales.
+---
+## 5.  Algoritmos Voraces
+
+## ¿Qué es un Algoritmo Voraz?
+
+Un **algoritmo voraz** (o *greedy*) es una estrategia de diseño de algoritmos que toma decisiones paso a paso, eligiendo la opción que parece ser la mejor en ese momento sin reconsiderar decisiones anteriores.
+
+El objetivo es construir una solución aproximada óptima o, en algunos casos, óptima exacta, tomando en cada paso la decisión más inmediata y favorable.
+
+---
+
+## 🔧 Principio del Algoritmo Voraz
+
+1. Se divide el problema en etapas.
+2. En cada etapa, se toma la mejor decisión local posible.
+3. No se vuelve atrás ni se reconsideran decisiones anteriores.
+4. Al final, la combinación de decisiones locales produce una solución global.
+
+---
+
+## Representación simplificada
+
+```python
+función algoritmoVoraz(problema):
+    solución = solución vacía
+    mientras problema no esté resuelto:
+        elegir la mejor opción local disponible
+        agregar esa opción a solución
+    retornar solución
+
+```
+---
+
+## ✅ Ventajas
+
+- Fácil de implementar.
+- Rápido, generalmente con complejidad polinomial.
+- Funciona bien para muchos problemas prácticos.
+- Ideal para problemas donde la elección local lleva a solución global óptima.
+## ⚠️ Desventajas
+
+- No garantiza la solución óptima para todos los problemas.
+- Puede ser necesario analizar cuidadosamente si el enfoque voraz es adecuado.
+- Algunas soluciones requieren técnicas más complejas (programación dinámica, backtracking).
+---
+
+## 📌 Aplicaciones comunes
+
+- Problema de la mochila fraccionaria.
+- Algoritmos de código Huffman para compresión.
+- Selección de actividades que no se traslapan (problema de scheduling).
+- Construcción de árboles de expansión mínima (Prim, Kruskal).
+- Optimización en redes y rutas.
+
+---
+
+## Conclusión
+
+Los **algoritmos voraces** son una herramienta poderosa para resolver problemas complejos de manera eficiente cuando las condiciones del problema permiten que las decisiones locales óptimas lleven a soluciones globales óptimas.
+
+Sin embargo, su simplicidad también puede ser una limitación, y es crucial verificar que el problema en cuestión sea apto para esta estrategia antes de aplicarla.
 
 
 
