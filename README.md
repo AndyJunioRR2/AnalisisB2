@@ -161,7 +161,7 @@ La eficiencia del algoritmo es producto del paradigma de **divide y vencerás**,
 - Localización de límites o umbrales (por ejemplo, en problemas de optimización).
 - Implementación de estructuras como árboles de búsqueda binaria (BST).
 - Uso en librerías estándar (`binary_search` en C++, `bisect` en Python).
-## Implementación básica
+## Implementación básica (Iterativa)
 
 La búsqueda binaria puede implementarse de distintas formas, pero una de las más comunes es el enfoque iterativo, el cual utiliza un bucle para reducir progresivamente el intervalo de búsqueda.
 
@@ -191,8 +191,140 @@ public static int busquedaBinaria(int[] arreglo, int x) {
 La **búsqueda binaria** es un claro ejemplo de cómo el paradigma de **divide y vencerás** puede transformar una operación aparentemente simple como buscar un número, en una operación altamente eficiente. Al reducir el espacio de búsqueda a la mitad en cada paso, se consigue un rendimiento excelente en escenarios donde la rapidez es clave.
 
 Comprender este paradigma no solo mejora nuestras habilidades de resolución de problemas, sino que también nos brinda herramientas para diseñar algoritmos elegantes y poderosos.
+---
+## 3. Merge Sort – Ordenamiento por Mezcla
 
+## ¿Qué es Merge Sort?
 
+**Merge Sort** es un algoritmo de ordenamiento que sigue el paradigma de **Divide y Vencerás**. Es eficiente, estable y garantiza un rendimiento de O(n log n) en todos los casos.
+
+Este algoritmo divide una lista en sublistas más pequeñas, ordena cada una de ellas y luego las combina (fusiona) en una lista final ordenada.
+
+---
+
+## 🔧 Principio del algoritmo
+
+1. **División**: Se divide la lista en dos mitades.
+2. **Conquista**: Se ordenan recursivamente ambas mitades usando el mismo algoritmo.
+3. **Combinación**: Se fusionan ambas mitades ordenadas en una nueva lista ordenada.
+
+---
+
+## Representación simplificada del algoritmo
+
+```python
+función mergeSort(lista):
+    si longitud(lista) ≤ 1:
+        retornar lista
+    mitad = longitud(lista) / 2
+    izquierda = mergeSort(lista[0:mitad])
+    derecha = mergeSort(lista[mitad:])
+    retornar merge(izquierda, derecha)
+
+función merge(izquierda, derecha):
+    resultado = []
+    mientras izquierda y derecha no estén vacías:
+        si izquierda[0] < derecha[0]:
+            agregar izquierda[0] a resultado
+            eliminar izquierda[0]
+        sino:
+            agregar derecha[0] a resultado
+            eliminar derecha[0]
+    agregar elementos restantes de izquierda y derecha a resultado
+    retornar resultado
+```
+
+---
+
+## ✅ Ventajas
+
+- Rendimiento garantizado O(n log n)
+- Estable: mantiene el orden relativo de elementos iguales
+- Funciona bien con listas enlazadas
+- Predecible incluso en el peor caso
+
+## ⚠️ Desventajas
+
+- Requiere espacio adicional (arreglos auxiliares)
+- Puede ser más lento que algoritmos como QuickSort para listas pequeñas
+- Mayor complejidad de implementación
+
+---
+
+## 📌 Aplicaciones comunes
+
+- Sistemas de archivos y bases de datos que requieren ordenamiento estable
+- Grandes volúmenes de datos que no caben en memoria (ordenamiento externo)
+- Algoritmos híbridos como **Timsort** (usado en Python y Java) que usan Merge Sort como parte de su lógica
+- Ordenamiento en listas enlazadas
+
+---
+
+## Conclusión
+
+**Merge Sort** es un algoritmo robusto, confiable y eficiente para el ordenamiento de listas. Su estructura basada en el paradigma *Divide y Vencerás* lo hace ideal para manejar grandes volúmenes de datos de manera predecible.
+
+Aunque puede no ser el más rápido en todos los casos, su rendimiento consistente y su estabilidad lo convierten en una excelente opción cuando se necesita precisión y consistencia en el ordenamiento.
+
+## 4. QuickSort – Ordenamiento Rápido
+
+## ¿Qué es QuickSort?
+
+**QuickSort** es un algoritmo de ordenamiento basado en el paradigma de **Divide y Vencerás**. Se destaca por su alta eficiencia en la práctica y su bajo consumo de memoria.
+
+El algoritmo selecciona un elemento como pivote y divide el arreglo en dos partes: los elementos menores al pivote y los mayores. Luego, aplica el mismo procedimiento recursivamente a ambas sublistas.
+
+---
+
+## Principio del algoritmo
+
+1. **División**: Elegir un elemento como pivote.
+2. **Conquista**: Reorganizar los elementos de manera que los menores al pivote queden a su izquierda y los mayores a su derecha.
+3. **Combinación**: Aplicar recursivamente QuickSort a las dos sublistas generadas.
+
+---
+
+## Representación simplificada del algoritmo
+
+```python
+función quickSort(lista):
+    si longitud(lista) ≤ 1:
+        retornar lista
+    pivote = lista[0]
+    menores = [elemento para elemento en lista[1:] si elemento < pivote]
+    mayores = [elemento para elemento en lista[1:] si elemento ≥ pivote]
+    retornar quickSort(menores) + [pivote] + quickSort(mayores)
+
+```
+---
+
+## ✅ Ventajas
+
+- Muy eficiente en promedio: O(n log n)
+- No requiere memoria adicional significativa
+- Generalmente más rápido que MergeSort para listas en memoria
+- Fácil de implementar
+
+## ⚠️ Desventajas
+
+- Peor caso O(n²) si el pivote no se elige bien
+- No es estable (puede cambiar el orden de elementos iguales)
+- Rendimiento sensible a la elección del pivote
+
+---
+
+## 📌 Aplicaciones comunes
+
+- Ordenamiento de grandes arreglos en memoria
+- Sistemas que priorizan velocidad sobre estabilidad
+- Implementaciones de ordenamiento estándar en muchos lenguajes (C, Java, etc.)
+- Algoritmos híbridos como introsort
+
+---
+
+## Conclusión
+
+**QuickSort** es uno de los algoritmos de ordenamiento más populares por su gran rendimiento promedio y bajo uso de memoria. Aunque su rendimiento puede degradarse en casos específicos, una buena elección de pivote y versiones optimizadas lo hacen extremadamente útil en aplicaciones reales.
 
 
 
